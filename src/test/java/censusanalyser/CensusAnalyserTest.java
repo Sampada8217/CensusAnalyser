@@ -30,7 +30,6 @@ public class CensusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
     }
-
     @Test
     public void givenIndianStateCSV_shouldReturnExactCount() {
         try {
@@ -39,4 +38,5 @@ public class CensusAnalyserTest {
             Assert.assertEquals(37, numOfStateCode);
         } catch (CensusAnalyserException e) { }
     }
+
 }
