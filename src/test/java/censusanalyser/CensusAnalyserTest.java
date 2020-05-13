@@ -13,10 +13,11 @@ public class CensusAnalyserTest {
     private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
     private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
     private static final String INDIA_STATE_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.";
-    private static final String INDIA_CENSUS_TYPE_INCORRECT_PATH="./src/test/resources/IndiaStateCensusData.cs";
+    private static final String INDIA_CENSUS_TYPE_INCORRECT_PATH="./src/test/resources/IndiaStateCensusData.pdf";
     private static final String INDIA_INCORRECT_DELIMITER_PATH="./src/test/resources/IndiaStateCensusData,csv";
     private static final String INDIA_INCORRECT_HEADER_PATH="./src/test/resources/IndiaStateCensusDataHeader.csv";
     private static final String INDIA_STATE_WRONG_FILE_PATH="./src/main/resources/IndiaStateCensusData.csv";
+    private static final  String INDIA_STATE_TYPE_INCORRECT_PATH="./src/test/resources/IndiaStateCensusData.pdf";
     @Test
 
     public void givenIndianCensus_withCSVFile_shouldReturnsCorrectRecords() {
@@ -94,6 +95,17 @@ public class CensusAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CensusAnalyserException.class);
             censusAnalyser.loadIndiaCensusData(INDIA_STATE_WRONG_FILE_PATH);
+        } catch (CensusAnalyserException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+    @Test
+    public void givenIndianStateData_whenCSVFileTypeIncorrect_shouldThrowException() {
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            ExpectedException exception = ExpectedException.none();
+            exception.expect(CensusAnalyserException.class);
+            censusAnalyser.loadIndiaCensusData(INDIA_STATE_TYPE_INCORRECT_PATH);
         } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
         }
