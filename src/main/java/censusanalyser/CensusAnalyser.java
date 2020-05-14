@@ -85,8 +85,17 @@ public class CensusAnalyser {
         }
         Comparator<IndiaCensusDAO> censusCSVComparator = Comparator.comparing(census -> census.densityPerSqKm);
         this.sortByDescending(censusCSVComparator);
-        String sortedPopulationCensus = new Gson().toJson(this.censusList);
-        return sortedPopulationCensus;
+        String sortedDensityCensus = new Gson().toJson(this.censusList);
+        return sortedDensityCensus;
+    }
+    public String getPopulationAreaWiseSortedData() throws CensusAnalyserException {
+        if (censusList == null || censusList.size() == 0) {
+            throw new CensusAnalyserException("No Census Data", CensusAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        Comparator<IndiaCensusDAO> censusCSVComparator = Comparator.comparing(census -> census.areaInSqKm);
+        this.sortByDescending(censusCSVComparator);
+        String sortedAreaCensus = new Gson().toJson(this.censusList);
+        return sortedAreaCensus;
     }
 
 
@@ -115,6 +124,4 @@ public class CensusAnalyser {
             }
         }
     }
-
-
 }
