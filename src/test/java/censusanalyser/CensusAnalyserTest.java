@@ -165,7 +165,7 @@ public class CensusAnalyserTest {
         } catch (CensusAnalyserException e) {
         }
     }
-
+/*
     @Test
     public void givenIndianCensusData_whenSortedOnPopulationDensity_shouldReturnSortedResult() {
         try {
@@ -187,7 +187,7 @@ public class CensusAnalyserTest {
             Assert.assertEquals(342239, censusCSV[0].areaInSqKm);
         } catch (CensusAnalyserException e) { }
     }
-
+*/
     @Test
     public void givenUSCensusData_shouldReturnCorrectRecords() {
         try {
