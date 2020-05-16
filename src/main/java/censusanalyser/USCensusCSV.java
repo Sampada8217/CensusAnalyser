@@ -35,18 +35,22 @@ public class USCensusCSV{
     public USCensusCSV() {
     }
 
-    public USCensusCSV(String state, String stateCode, int population, double populationDensity, double totalArea) {
-
+    public USCensusCSV(String stateCode,String state, int population, double populationDensity, double totalArea) {
+        this.stateId=stateCode;
+        this.state=state;
+        this.population=population;
+        this.populationDensity=populationDensity;
+        this.totalArea=totalArea;
     }
 
     @Override
     public String toString() {
         return "IndiaCensusCSV{" +
+                "State ID='"+stateId+ '\''+
                 "State='" + state + '\'' +
                 ", Population='" + population + '\'' +
                 ", TotalArea='" + totalArea+ '\'' +
                 ", Population Density='" + populationDensity+ '\'' +
-                ",State Id='"+stateId+ '\''+
                 '}';
     }
 }

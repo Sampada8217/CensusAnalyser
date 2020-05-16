@@ -85,18 +85,4 @@ public class CensusAnalyser {
         String sortedDensityCensus = new Gson().toJson(censusDTOS);
         return sortedDensityCensus;
     }
-
-
-    private void sortByDescending(List<CensusDAO> censusDAOS,Comparator<CensusDAO> censusComparator) {
-        for (int i = 0; i < censusDAOS.size() - 1; i++) {
-            for (int j = 0; j < censusDAOS.size() - i - 1; j++) {
-                CensusDAO census1 = censusDAOS.get(j);
-                CensusDAO census2 = censusDAOS.get(j + 1);
-                if (censusComparator.compare(census1, census2) < 0) {
-                   censusDAOS.set(j, census2);
-                    censusDAOS.set(j + 1, census1);
-                }
-            }
-        }
-    }
 }
