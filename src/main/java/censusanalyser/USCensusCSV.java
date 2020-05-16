@@ -11,7 +11,6 @@ public class USCensusCSV{
     @CsvBindByName(column = "State Id", required = true)
     public String state;
 
-
     @CsvBindByName(column = "Population", required = true)
     public int population;
 
